@@ -63,7 +63,7 @@ class Admin extends CI_Controller {
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');
-        $this->load->view('admin/pasien', $data);
+        $this->load->view('admin/index', $data);
         $this->load->view('templates/footer');
     }
 
@@ -77,12 +77,29 @@ class Admin extends CI_Controller {
     }
 
     public function simpan_pasien()
+{
+    $data = [
+        'nama'           => $this->input->post('nama'),
+        'tanggal_lahir'  => $this->input->post('tanggal_lahir'),
+        'alamat'         => $this->input->post('alamat'),
+        'no_telp'        => $this->input->post('no_telp'),
+        'username'       => $this->input->post('username')
+    ];
+
+    $this->pasien_model->insert($data);
+
+    $this->session->set_flashdata('success', 'Data pasien berhasil ditambahkan');
+
+    redirect('admin/pasien');
+}
+
+    public function simpan_pasien()
     {
         $data = [
             'nama'           => $this->input->post('nama'),
             'tanggal_lahir'  => $this->input->post('tanggal_lahir'),
             'alamat'         => $this->input->post('alamat'),
-            'telepon'        => $this->input->post('telfepon')
+            'telepon'        => $this->input->post('telepon')
         ];
 
         $this->pasien_model->insert($data);
