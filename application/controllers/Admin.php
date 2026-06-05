@@ -63,19 +63,18 @@ class Admin extends CI_Controller {
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');
-        $this->load->view('admin/index', $data);
+        $this->load->view('pasien/index', $data);
         $this->load->view('templates/footer');
     }
 
     public function tambah_pasien()
-    {
-        $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
-        $this->load->view('templates/topbar');
-        $this->load->view('admin/tambah_pasien');
-        $this->load->view('templates/footer');
-    }
-
+{
+    $this->load->view('templates/header');
+    $this->load->view('templates/sidebar');
+    $this->load->view('templates/topbar');
+    $this->load->view('pasien/tambah');
+    $this->load->view('templates/footer');
+}
     public function simpan_pasien()
 {
     $data = [
@@ -92,20 +91,6 @@ class Admin extends CI_Controller {
 
     redirect('admin/pasien');
 }
-
-    public function simpan_pasien()
-    {
-        $data = [
-            'nama'           => $this->input->post('nama'),
-            'tanggal_lahir'  => $this->input->post('tanggal_lahir'),
-            'alamat'         => $this->input->post('alamat'),
-            'telepon'        => $this->input->post('telepon')
-        ];
-
-        $this->pasien_model->insert($data);
-        redirect('admin/pasien');
-    }
-
     public function edit_pasien($id)
     {
         $data['pasien'] = $this->pasien_model->get_by_id($id);
@@ -117,7 +102,7 @@ class Admin extends CI_Controller {
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');
-        $this->load->view('admin/edit_pasien', $data);
+        $this->load->view('pasien/edit', $data);
         $this->load->view('templates/footer');
     }
 
@@ -127,7 +112,7 @@ class Admin extends CI_Controller {
             'nama'           => $this->input->post('nama'),
             'tanggal_lahir'  => $this->input->post('tanggal_lahir'),
             'alamat'         => $this->input->post('alamat'),
-            'telepon'        => $this->input->post('telepon')
+            'no_telp'        => $this->input->post('no_telp')
         ];
 
         $this->pasien_model->update($id, $data);
