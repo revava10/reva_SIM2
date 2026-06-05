@@ -10,7 +10,7 @@
 
 <div class="form-group">
     <label>Nama Pasien</label>
-    <input type="text" name="nama_pasien" class="form-control" required>
+    <input type="text" name="nama" class="form-control" required>
 </div>
 
 <div class="form-group">

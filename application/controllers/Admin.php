@@ -8,10 +8,11 @@ class Admin extends CI_Controller {
         parent::__construct();
         $this->load->model('Admin_model');
         $this->load->model('pasien_model');
+        $this->load->model('pendaftaran_model');
         $this->load->library('form_validation');
 
         // cek login admin
-        if(!$this->session->userdata('login_admin')){
+        if(!$this->session->userdata('login')){
             redirect('auth');
         }
     }
@@ -38,7 +39,7 @@ class Admin extends CI_Controller {
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');
-        $this->load->view('admin/pendaftaran', $data);
+        $this->load->view('pendaftaran/index', $data);
         $this->load->view('templates/footer');
     }
 
@@ -81,7 +82,7 @@ class Admin extends CI_Controller {
             'nama'           => $this->input->post('nama'),
             'tanggal_lahir'  => $this->input->post('tanggal_lahir'),
             'alamat'         => $this->input->post('alamat'),
-            'telepon'        => $this->input->post('telepon')
+            'telepon'        => $this->input->post('telfepon')
         ];
 
         $this->pasien_model->insert($data);
