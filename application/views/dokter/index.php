@@ -1,14 +1,10 @@
 <div class="container-fluid">
 
-    <h1 class="h3 mb-4 text-gray-800">Data Dokter</h1>
+    <h2 class="h3 mb-4 text-gray-800">
+        <i class="fas fa-user-md"></i> Data Dokter
+    </h2>
 
-    <?php if($this->session->flashdata('success')): ?>
-        <div class="alert alert-success">
-            <?= $this->session->flashdata('success'); ?>
-        </div>
-    <?php endif; ?>
-
-    <a href="<?= site_url('admin/tambah_dokter'); ?>" class="btn btn-primary mb-3">
+    <a href="<?= site_url('dokter/tambah'); ?>" class="btn btn-danger mb-3">
         <i class="fas fa-plus"></i> Tambah Dokter
     </a>
 
@@ -17,57 +13,44 @@
 
             <div class="table-responsive">
 
-                <table class="table table-bordered" id="dataTable" width="100%">
-                    <thead class="thead-dark">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                    <thead style="background:#a0002d; color:white;">
                         <tr>
                             <th>No</th>
                             <th>id_dokter</th>
                             <th>nama_dokter</th>
-                            <th>spesialis</th>
+                            <th>Spesialis</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
 
-                    <tbody>
+                                    <tbody>
+                <?php $no = 1; foreach($dokter as $d): ?>
+                <tr>
+                    <td><?= $no++; ?></td>
 
-                    <?php if(!empty($dokter)): ?>
+                    <!-- TAMBAHAN INI -->
+                    <td><?= $d->id_dokter; ?></td>
 
-                        <?php $no = 1; ?>
-                        <?php foreach($dokter as $d): ?>
+                    <td><?= $d->nama_dokter; ?></td>
+                    <td><?= $d->spesialis; ?></td>
 
-                        <tr>
-                            <td><?= $no++; ?></td>
-                            <td><?= $d->id_dokter; ?></td>
-                            <td><?= $d->nama_dokter; ?></td>
-                            <td><?= $d->spesialis; ?></td>
+                    <td>
+                        <a href="<?= site_url('dokter/edit/'.$d->id_dokter); ?>"
+                        class="btn btn-warning btn-sm">
+                            <i class="fas fa-edit"></i>
+                        </a>
 
-                            <td>
-                                <a href="<?= site_url('admin/edit_dokter/'.$d->id_dokter); ?>"
-                                   class="btn btn-warning btn-sm">
-                                    Edit
-                                </a>
-
-                                <a href="<?= site_url('admin/hapus_dokter/'.$d->id_dokter); ?>"
-                                   class="btn btn-danger btn-sm"
-                                   onclick="return confirm('Yakin ingin menghapus data ini?')">
-                                    Hapus
-                                </a>
-                            </td>
-                        </tr>
-
-                        <?php endforeach; ?>
-
-                    <?php else: ?>
-
-                        <tr>
-                            <td colspan="5" class="text-center">
-                                Data dokter kosong
-                            </td>
-                        </tr>
-
-                    <?php endif; ?>
-
-                    </tbody>
+                        <a href="<?= site_url('dokter/hapus/'.$d->id_dokter); ?>"
+                        onclick="return confirm('Yakin ingin menghapus data ini?')"
+                        class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+                </tbody>
 
                 </table>
 
@@ -77,9 +60,3 @@
     </div>
 
 </div>
-
-<script>
-$(document).ready(function() {
-    $('#dataTable').DataTable();
-});
-</script>

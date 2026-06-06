@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pendaftaran_model extends CI_Model {
+class pendaftaran_model extends CI_Model {
 
     private $table = 'tb_pendaftaran';
 

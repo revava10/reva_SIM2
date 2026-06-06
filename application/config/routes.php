@@ -56,3 +56,30 @@ $route['translate_uri_dashes'] = FALSE;
 $route['login']='auth';
 $route['login/proses']='auth/login';
 $route['logout']='auth/logout';
+
+// ================= DOKTER =================
+$route['dokter'] = 'admin/dokter';
+$route['dokter/tambah'] = 'admin/tambah_dokter';
+$route['dokter/simpan'] = 'admin/simpan_dokter';
+$route['dokter/edit/(:num)'] = 'admin/edit_dokter/$1';
+$route['dokter/update/(:num)'] = 'admin/update_dokter/$1';
+$route['dokter/hapus/(:num)'] = 'admin/hapus_dokter/$1';
+
+// ================= PASIEN =================
+$route['pasien'] = 'admin/pasien';
+$route['pasien/tambah'] = 'admin/tambah_pasien';
+$route['pasien/simpan'] = 'admin/simpan_pasien';
+$route['pasien/edit/(:num)'] = 'admin/edit_pasien/$1';
+$route['pasien/update/(:num)'] = 'admin/update_pasien/$1';
+$route['pasien/hapus/(:num)'] = 'admin/hapus_pasien/$1';
+
+// ================= LAPORAN =================
+$route['laporan'] = 'laporan/pendaftaran';
+$route['laporan/pendaftaran'] = 'laporan/pendaftaran';
+$route['laporan/pasien'] = 'laporan/pasien';
+$route['laporan/dokter'] = 'laporan/dokter';
+
+// CETAK
+$route['laporan/cetak/pendaftaran'] = 'laporan/cetak_pendaftaran';
+$route['laporan/cetak/pasien'] = 'laporan/cetak_pasien';
+$route['laporan/cetak/dokter'] = 'laporan/cetak_dokter';

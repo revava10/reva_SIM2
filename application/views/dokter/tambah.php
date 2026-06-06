@@ -1,40 +1,28 @@
 <div class="container-fluid">
 
-    <h1 class="h3 mb-4 text-gray-800">Tambah Data Dokter</h1>
+<h1 class="h3 mb-4 text-gray-800">Tambah Dokter</h1>
 
-    <div class="card shadow">
-        <div class="card-body">
+<div class="card shadow">
+<div class="card-body">
 
-            <form method="post" action="<?= site_url('admin/simpan_dokter'); ?>">
+<form method="post" action="<?= site_url('dokter/simpan'); ?>">
 
-                <div class="form-group">
-                    <label>Nama Dokter</label>
-                    <input type="text"
-                           name="nama_dokter"
-                           class="form-control"
-                           required>
-                </div>
+<div class="form-group">
+<label>Nama Dokter</label>
+<input type="text" name="nama_dokter" class="form-control" required>
+</div>
 
-                <div class="form-group">
-                    <label>Spesialis</label>
-                    <input type="text"
-                           name="spesialis"
-                           class="form-control"
-                           required>
-                </div>
+<div class="form-group">
+<label>Spesialis</label>
+<input type="text" name="spesialis" class="form-control" required>
+</div>
 
-                <button type="submit" class="btn btn-primary">
-                    Simpan
-                </button>
+<button type="submit" class="btn btn-primary">Simpan</button>
+<a href="<?= site_url('dokter'); ?>" class="btn btn-secondary">Kembali</a>
 
-                <a href="<?= site_url('admin/dokter'); ?>"
-                   class="btn btn-secondary">
-                    Kembali
-                </a>
+</form>
 
-            </form>
-
-        </div>
-    </div>
+</div>
+</div>
 
 </div>

@@ -51,15 +51,6 @@
                            required>
                 </div>
 
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="text"
-                           name="password"
-                           value="<?= $pasien->password; ?>"
-                           class="form-control"
-                           required>
-                </div>
-
                 <button type="submit" class="btn btn-primary">
                     Update
                 </button>

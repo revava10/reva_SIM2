@@ -8,9 +8,9 @@ class Admin extends CI_Controller {
         parent::__construct();
 
         $this->load->model('Admin_model');
-        $this->load->model('Pasien_model');
+        $this->load->model('pasien_model');
         $this->load->model('Dokter_model');
-        $this->load->model('Pendaftaran_model');
+        $this->load->model('pendaftaran_model');
 
         $this->load->library('form_validation');
 
@@ -57,93 +57,151 @@ class Admin extends CI_Controller {
         redirect('admin/pendaftaran');
     }
 
- // ================= DATA PASIEN =================
-public function pasien()
+    // ================= DATA PASIEN =================
+    public function pasien()
+    {
+        $data['pasien'] = $this->pasien_model->get_all();
+
+        $this->load->view('templates/header');
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar');
+        $this->load->view('pasien/index', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function tambah_pasien()
+    {
+        $this->load->view('templates/header');
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar');
+        $this->load->view('pasien/tambah');
+        $this->load->view('templates/footer');
+    }
+
+    public function simpan_pasien()
+    {
+        $data = [
+            'nama'           => $this->input->post('nama'),
+            'tanggal_lahir'  => $this->input->post('tanggal_lahir'),
+            'alamat'         => $this->input->post('alamat'),
+            'no_telp'        => $this->input->post('no_telp'),
+            'username'       => $this->input->post('username'),
+            'password'       => $this->input->post('password')
+        ];
+
+        $this->pasien_model->insert($data);
+
+        $this->session->set_flashdata('success', 'Data pasien berhasil ditambahkan');
+        redirect('admin/pasien');
+    }
+
+    public function edit_pasien($id)
+    {
+        $data['pasien'] = $this->pasien_model->get_by_id($id);
+
+        if (!$data['pasien']) {
+            show_404();
+        }
+
+        $this->load->view('templates/header');
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar');
+        $this->load->view('pasien/edit', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function update_pasien($id)
+    {
+        $data = [
+            'nama'           => $this->input->post('nama'),
+            'tanggal_lahir'  => $this->input->post('tanggal_lahir'),
+            'alamat'         => $this->input->post('alamat'),
+            'no_telp'        => $this->input->post('no_telp'),
+            'username'       => $this->input->post('username'),
+            'password'       => $this->input->post('password')
+        ];
+
+        $this->pasien_model->update($id, $data);
+
+        $this->session->set_flashdata('success', 'Data pasien berhasil diupdate');
+        redirect('admin/pasien');
+    }
+
+    public function hapus_pasien($id)
+    {
+        $this->pasien_model->delete($id);
+
+        $this->session->set_flashdata('success', 'Data pasien berhasil dihapus');
+        redirect('admin/pasien');
+    }
+
+    // ================= DATA DOKTER =================
+public function dokter()
 {
-    $data['pasien'] = $this->pasien_model->get_all();
+    $data['dokter'] = $this->Dokter_model->get_all();
 
     $this->load->view('templates/header');
     $this->load->view('templates/sidebar');
     $this->load->view('templates/topbar');
-    $this->load->view('pasien/index', $data);
+    $this->load->view('dokter/index', $data);
     $this->load->view('templates/footer');
 }
 
-public function tambah_pasien()
+public function tambah_dokter()
 {
     $this->load->view('templates/header');
     $this->load->view('templates/sidebar');
     $this->load->view('templates/topbar');
-    $this->load->view('pasien/tambah');
+    $this->load->view('dokter/tambah');
     $this->load->view('templates/footer');
 }
 
-public function simpan_pasien()
+public function simpan_dokter()
 {
     $data = [
-        'nama'           => $this->input->post('nama'),
-        'tanggal_lahir'  => $this->input->post('tanggal_lahir'),
-        'alamat'         => $this->input->post('alamat'),
-        'no_telp'        => $this->input->post('no_telp'),
-        'username'       => $this->input->post('username'),
-        'password'       => $this->input->post('password')
+        'nama_dokter' => $this->input->post('nama_dokter'),
+        'spesialis'   => $this->input->post('spesialis')
     ];
 
-    $this->pasien_model->insert($data);
+    $this->Dokter_model->insert($data);
 
-    $this->session->set_flashdata(
-        'success',
-        'Data pasien berhasil ditambahkan'
-    );
-
-    redirect('admin/pasien');
+    $this->session->set_flashdata('success', 'Data dokter berhasil ditambahkan');
+    redirect('admin/dokter');
 }
 
-public function edit_pasien($id)
+public function edit_dokter($id_dokter)
 {
-    $data['pasien'] = $this->pasien_model->get_by_id($id);
+    $data['dokter'] = $this->Dokter_model->get_by_id($id_dokter);
 
-    if (!$data['pasien']) {
+    if (!$data['dokter']) {
         show_404();
     }
 
     $this->load->view('templates/header');
     $this->load->view('templates/sidebar');
     $this->load->view('templates/topbar');
-    $this->load->view('pasien/edit', $data);
+    $this->load->view('dokter/edit', $data);
     $this->load->view('templates/footer');
 }
 
-public function update_pasien($id)
+public function update_dokter($id_dokter)
 {
     $data = [
-        'nama'           => $this->input->post('nama'),
-        'tanggal_lahir'  => $this->input->post('tanggal_lahir'),
-        'alamat'         => $this->input->post('alamat'),
-        'no_telp'        => $this->input->post('no_telp'),
-        'username'       => $this->input->post('username'),
-        'password'       => $this->input->post('password')
+        'nama_dokter' => $this->input->post('nama_dokter'),
+        'spesialis'   => $this->input->post('spesialis')
     ];
 
-    $this->pasien_model->update($id, $data);
+    $this->Dokter_model->update($id_dokter, $data);
 
-    $this->session->set_flashdata(
-        'success',
-        'Data pasien berhasil diupdate'
-    );
-
-    redirect('admin/pasien');
+    $this->session->set_flashdata('success', 'Data dokter berhasil diupdate');
+    redirect('admin/dokter');
 }
 
-public function hapus_pasien($id)
-{
-    $this->pasien_model->delete($id);
+    public function hapus_dokter($id_dokter)
+    {
+        $this->Dokter_model->delete($id_dokter);
 
-    $this->session->set_flashdata(
-        'success',
-        'Data pasien berhasil dihapus'
-    );
-
-    redirect('admin/pasien');
-}
+        $this->session->set_flashdata('success', 'Data dokter berhasil dihapus');
+        redirect('admin/dokter');
+    }
 }
