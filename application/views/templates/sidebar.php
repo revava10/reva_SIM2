@@ -5,7 +5,7 @@
         <div class="sidebar-brand-icon rotate-15">
             <i class="fas fa-hospital"></i>
         </div>    
-        <div class="sidebar-brand-text mx-3">SIM Klinik</div>
+        <div class="sidebar-brand-text mx-3">Hospitally</div>
     </a>
 
     <hr class="sidebar-divider my-0">
@@ -36,16 +36,15 @@
         </a>
     </li>
 
-    <!-- Tambah Pasien -->
+    <!-- Dokter -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= site_url('admin/tambah_pasien'); ?>">
-            <i class="fas fa-fw fa-user-plus"></i>
-            <span>Tambah Pasien</span>
-        </a>
+         <a class="nav-link" href="<?= site_url('admin/dokter'); ?>">
+        <i class="fas fa-fw fa-user-md"></i>
+        <span>Data Dokter</span>
+    </a>
     </li>
 
     <hr class="sidebar-divider">
-
     <!-- Logout -->
     <li class="nav-item">
         <a class="nav-link" href="<?= site_url('auth/logout'); ?>">

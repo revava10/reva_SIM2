@@ -21,9 +21,9 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>No</th>
-                            <th>ID Dokter</th>
-                            <th>Nama Dokter</th>
-                            <th>Spesialis</th>
+                            <th>id_dokter</th>
+                            <th>nama_dokter</th>
+                            <th>spesialis</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
