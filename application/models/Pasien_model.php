@@ -28,9 +28,14 @@ class Pasien_model extends CI_Model {
         return $this->db->update($this->table, $data);
     }
 
-    public function delete($id_pasien)
-    {
-        $this->db->where('id_pasien', $id_pasien);
-        return $this->db->delete($this->table);
-    }
+  public function delete($id_pasien)
+{
+    $this->db->where('id_pasien', $id_pasien);
+    return $this->db->delete($this->table);
+}
+
+public function count_all()
+{
+    return $this->db->count_all($this->table);
+}
 }
