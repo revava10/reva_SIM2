@@ -16,8 +16,9 @@
         <div class="card-body">
             <div class="table-responsive">
 
-                <table class="table table-bordered" id="dataTable" width="100%">
-                    <thead class="thead-dark">
+                <table class="table table-bordered table-hover dataTable" id="dataTable" width="100%">
+
+                    <thead>
                         <tr>
                             <th>No</th>
                             <th>Nama Pasien</th>
@@ -48,32 +49,23 @@
                                 <?php elseif($p->status == 'Ditolak'): ?>
                                     <span class="badge badge-danger">Ditolak</span>
                                 <?php else: ?>
-                                    <span class="badge badge-secondary">
-                                        <?= $p->status; ?>
-                                    </span>
+                                    <span class="badge badge-secondary"><?= $p->status; ?></span>
                                 <?php endif; ?>
                             </td>
                             <td><?= $p->tanggal_daftar; ?></td>
                             <td>
                                 <a href="<?= site_url('pendaftaran/edit/'.$p->id_pendaftaran); ?>" 
-                                   class="btn btn-warning btn-sm">
-                                   Edit
-                                </a>
+                                   class="btn btn-warning btn-sm">Edit</a>
 
                                 <a href="<?= site_url('pendaftaran/hapus/'.$p->id_pendaftaran); ?>" 
                                    class="btn btn-danger btn-sm"
-                                   onclick="return confirm('Yakin ingin menghapus data ini?')">
-                                   Hapus
-                                </a>
+                                   onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</a>
                             </td>
                         </tr>
                         <?php endforeach; ?>
-
                     <?php else: ?>
                         <tr>
-                            <td colspan="8" class="text-center">
-                                Data pendaftaran kosong
-                            </td>
+                            <td colspan="8" class="text-center">Data pendaftaran kosong</td>
                         </tr>
                     <?php endif; ?>
                     </tbody>
@@ -91,3 +83,63 @@ $(document).ready(function() {
     $('#dataTable').DataTable();
 });
 </script>
+
+<!-- ================= STYLE FINAL ================= -->
+<style>
+
+/* FONT SAMA PASIEN */
+body, table, th, td, .table, .dataTable {
+    font-family: Arial, sans-serif !important;
+}
+
+/* TEXT TABLE */
+table td {
+    font-size: 14px;
+    color: #333;
+}
+
+/* JUDUL */
+h1, h2, h6 {
+    font-family: Arial, sans-serif !important;
+    color: #800020 !important;
+    font-weight: bold;
+}
+
+/* CARD */
+.card {
+    border-radius: 10px !important;
+    border: none !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,.08) !important;
+}
+
+/* HEADER TABLE (HILANGKAN ABU-ABU DATA TABLE) */
+table.dataTable thead th,
+thead th {
+    background: #800020 !important;
+    color: white !important;
+    border-bottom: none !important;
+}
+
+/* HOVER ROW */
+table.dataTable tbody tr:hover {
+    background-color: #f8f0f2 !important;
+}
+
+/* BADGE */
+.badge-success { background-color:#1cc88a !important; }
+.badge-danger  { background-color:#e74a3b !important; }
+.badge-warning { background-color:#800020 !important; }
+
+/* UI DATA TABLE */
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+/* BUTTON */
+.btn {
+    font-family: Arial, sans-serif !important;
+}
+
+</style>
