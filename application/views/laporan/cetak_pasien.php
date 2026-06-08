@@ -1,57 +1,72 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-    <title>Cetak Pasien</title>
+    <title>Cetak Laporan Pasien</title>
 
     <style>
+        body{
+            font-family: Arial;
+        }
+
+        h3{
+            text-align: center;
+        }
 
         table{
-            width:100%;
+            width: 100%;
             border-collapse: collapse;
         }
 
         table, th, td{
-            border:1px solid black;
-            padding:8px;
+            border: 1px solid black;
         }
 
-    </style>
+        th, td{
+            padding: 8px;
+            text-align: center;
+        }
 
+        @media print{
+            button{
+                display: none;
+            }
+        }
+    </style>
 </head>
 
-<body onload="window.print()">
+<body>
 
-    <h2>Laporan Data Pasien</h2>
+    <h3>LAPORAN DATA PASIEN</h3>
 
     <table>
-
         <tr>
             <th>No</th>
+            <th>ID Pasien</th>
             <th>Nama Pasien</th>
-            <th>Alamat</th>
-            <th>Telepon</th>
-            <th>Keluhan</th>
-            <th>Status</th>
+            <th>Jenis Kelamin</th>
         </tr>
 
-        <?php
-        $no = 1;
-        foreach($pasien as $p){
-        ?>
-
+        <?php $no=1; foreach($pasien as $p): ?>
         <tr>
-            <td><?= $no++ ?></td>
-            <td><?= $p->nama ?></td>
-            <td><?= $p->alamat ?></td>
-            <td><?= $p->telepon ?></td>
-            <td><?= $p->keluhan ?></td>
-            <td><?= $p->status ?></td>
+            <td><?= $no++; ?></td>
+            <td><?= $p->id_pasien; ?></td>
+            <td><?= $p->nama; ?></td>
+            <td><?= $p->jenis_kelamin; ?></td>
         </tr>
-
-        <?php } ?>
+        <?php endforeach; ?>
 
     </table>
+
+    <br><br>
+
+    <p style="text-align:right;">
+        Tangerang, <?= date('d-m-Y'); ?><br><br><br>
+        (Admin)
+    </p>
+
+    <script>
+        window.print();
+    </script>
 
 </body>
 </html>

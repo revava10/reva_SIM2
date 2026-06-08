@@ -17,6 +17,7 @@ class Laporan extends CI_Controller {
         redirect('laporan/pendaftaran');
     }
 
+    // ================= Pendaftaran =================
     public function pendaftaran()
     {
         $bulan = $this->input->get('bulan');
@@ -40,6 +41,7 @@ class Laporan extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+    // ================= Pasien =================
     public function pasien()
     {
         $data['pasien'] = $this->db->get('pasien')->result();
@@ -51,6 +53,7 @@ class Laporan extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+    // ================= Dokter =================
     public function dokter()
     {
         $data['dokter'] = $this->db->get('dokter')->result();
@@ -62,27 +65,32 @@ class Laporan extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+    // ================= CETAK PENDAFTARAN =================
     public function cetak_pendaftaran()
-{
-    $this->db->select('pendaftaran.*, pasien.nama AS nama_pasien, dokter.nama_dokter');
-    $this->db->from('pendaftaran');
-    $this->db->join('pasien', 'pasien.id_pasien = pendaftaran.id_pasien');
-    $this->db->join('dokter', 'dokter.id_dokter = pendaftaran.id_dokter');
+    {
+        $this->db->select('pendaftaran.*, pasien.nama AS nama_pasien, dokter.nama_dokter');
+        $this->db->from('pendaftaran');
+        $this->db->join('pasien', 'pasien.id_pasien = pendaftaran.id_pasien');
+        $this->db->join('dokter', 'dokter.id_dokter = pendaftaran.id_dokter');
 
-    $data['data'] = $this->db->get()->result();
+        $data['data'] = $this->db->get()->result();
 
-    $this->load->view('laporan/cetak_pendaftaran', $data);
-}
+        $this->load->view('laporan/cetak_pendaftaran', $data);
+    }
 
+    // ================= CETAK PASIEN =================
     public function cetak_pasien()
     {
         $data['pasien'] = $this->db->get('pasien')->result();
+
         $this->load->view('laporan/cetak_pasien', $data);
     }
 
+    // ================= CETAK DOKTER =================
     public function cetak_dokter()
     {
         $data['dokter'] = $this->db->get('dokter')->result();
+
         $this->load->view('laporan/cetak_dokter', $data);
     }
 }

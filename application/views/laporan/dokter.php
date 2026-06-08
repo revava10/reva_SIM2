@@ -1,54 +1,32 @@
-<div class="container">
+<div class="container-fluid">
+    <h3>Laporan Data Dokter</h3>
 
-    <h3>Laporan Dokter</h3>
+```
+<br>
 
-    <form method="GET">
+<a href="<?= site_url('laporan/cetak/dokter'); ?>"
+   target="_blank"
+   class="btn btn-primary btn-sm">
+   Cetak PDF
+</a>
 
-        <input type="text"
-               name="keyword"
-               value="<?= $keyword ?>"
-               placeholder="Cari nama dokter atau spesialis">
+<table class="table table-bordered mt-3">
+    <tr>
+        <th>No</th>
+        <th>id dokter</th>
+        <th>nama dokter</th>
+        <th>Spesialis</th>
+    </tr>
 
-        <button type="submit" class="btn btn-secondary">
-            Filter
-        </button>
-
-        <a href="<?= base_url('laporan/dokter') ?>"
-           class="btn btn-secondary">
-           Reset
-        </a>
-
-    </form>
-
-    <br>
-
-    <a href="<?= base_url('laporan/cetak_dokter') ?>"
-       target="_blank"
-       class="btn btn-primary mb-3">
-       Cetak PDF
-    </a>
-
-    <table class="table table-bordered">
-
-        <tr>
-            <th>No</th>
-            <th>Nama Dokter</th>
-            <th>Spesialis</th>
-        </tr>
-
-        <?php
-        $no = 1;
-        foreach($dokter as $d){
-        ?>
-
-        <tr>
-            <td><?= $no++ ?></td>
-            <td><?= $d->nama_dokter ?></td>
-            <td><?= $d->spesialis ?></td>
-        </tr>
-
-        <?php } ?>
-
-    </table>
+    <?php $no = 1; foreach($dokter as $d): ?>
+    <tr>
+        <td><?= $no++; ?></td>
+        <td><?= $d->id_dokter; ?></td>
+        <td><?= $d->nama_dokter; ?></td>
+        <td><?= $d->spesialis; ?></td>
+    </tr>
+    <?php endforeach; ?>
+</table>
+```
 
 </div>
