@@ -139,11 +139,27 @@
 
     <!-- Cetak Laporan -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= site_url('cetak/laporan'); ?>">
+        <a class="nav-link" href="<?= site_url('laporan/cetak_dokter'); ?>">
             <i class="fas fa-fw fa-print"></i>
-            <span>Cetak Laporan</span>
+            <span>Laporan dokter</span>
         </a>
     </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="<?= site_url('laporan/cetak_pasien'); ?>">
+            <i class="fas fa-fw fa-print"></i>
+            <span>Laporan pasien</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="<?= site_url('laporan/cetak_pendaftaran'); ?>">
+            <i class="fas fa-fw fa-print"></i>
+            <span>Laporan pendaftaran</span>
+        </a>
+    </li>
+
+
 
     <hr class="sidebar-divider">
 

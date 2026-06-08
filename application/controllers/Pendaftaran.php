@@ -33,6 +33,7 @@ class Pendaftaran extends CI_Controller {
     public function simpan()
     {
         $data = [
+            'nomor_pendaftaran' => $this->input->post('nomor_pendaftaran'),
             'id_pasien'         => $this->input->post('id_pasien'),
             'id_dokter'         => $this->input->post('id_dokter'),
             'nama_pasien'       => $this->input->post('nama_pasien'),

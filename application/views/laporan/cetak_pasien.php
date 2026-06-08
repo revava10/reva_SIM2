@@ -43,7 +43,7 @@
             <th>No</th>
             <th>ID Pasien</th>
             <th>Nama Pasien</th>
-            <th>Jenis Kelamin</th>
+            <th>Tanggal lahir</th>
         </tr>
 
         <?php $no=1; foreach($pasien as $p): ?>
@@ -51,7 +51,7 @@
             <td><?= $no++; ?></td>
             <td><?= $p->id_pasien; ?></td>
             <td><?= $p->nama; ?></td>
-            <td><?= $p->jenis_kelamin; ?></td>
+            <td><?= $p->tanggal_lahir; ?></td>
         </tr>
         <?php endforeach; ?>
 

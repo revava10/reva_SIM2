@@ -4,7 +4,7 @@
 ```
 <br>
 
-<a href="<?= site_url('laporan/cetak/dokter'); ?>"
+<a href="<?= site_url('laporan/cetak_dokter'); ?>"
    target="_blank"
    class="btn btn-primary btn-sm">
    Cetak PDF
@@ -27,6 +27,5 @@
     </tr>
     <?php endforeach; ?>
 </table>
-```
 
 </div>
