@@ -222,10 +222,10 @@ hr{
 
     </div>
 
-    <!-- STATISTIK -->
+   <!-- STATISTIK -->
 <div class="row mb-4">
 
-    <div class="col-md-4">
+    <div class="col-md-4 mb-3">
 
         <div class="card stat-card bg-stat-1 shadow">
 
@@ -245,7 +245,7 @@ hr{
 
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-4 mb-3">
 
         <div class="card stat-card bg-stat-2 shadow">
 
@@ -254,12 +254,14 @@ hr{
                 <i class="fas fa-user-md fa-3x"></i>
 
                 <h5 class="mt-3">
-                    Dokter Tersedia
+                    Pelayanan Dokter
                 </h5>
 
-                <h2>
-                    <?= isset($jumlah_dokter) ? $jumlah_dokter : 0; ?>
-                </h2>
+                <h2>Aktif & Tersedia</h2>
+
+                <small>
+                    Siap melayani pasien
+                </small>
 
             </div>
 
@@ -267,7 +269,7 @@ hr{
 
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-4 mb-3">
 
         <div class="card stat-card bg-stat-3 shadow">
 
@@ -288,7 +290,6 @@ hr{
     </div>
 
 </div>
-
     <!-- MENU -->
     <div class="row">
 
