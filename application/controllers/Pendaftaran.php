@@ -32,8 +32,10 @@ class Pendaftaran extends CI_Controller {
 
     public function simpan()
     {
+        $nomor_pendaftaran = 'REG-' . date('YmdHis');
+
         $data = [
-            'nomor_pendaftaran' => $this->input->post('nomor_pendaftaran'),
+            'nomor_pendaftaran' => $nomor_pendaftaran,
             'id_pasien'         => $this->input->post('id_pasien'),
             'id_dokter'         => $this->input->post('id_dokter'),
             'nama_pasien'       => $this->input->post('nama_pasien'),
@@ -41,7 +43,7 @@ class Pendaftaran extends CI_Controller {
             'tanggal_kunjungan' => $this->input->post('tanggal_kunjungan'),
             'jam_kunjungan'     => $this->input->post('jam_kunjungan'),
             'status'            => $this->input->post('status'),
-            'tanggal_daftar'    => $this->input->post('tanggal_daftar')
+            'tanggal_daftar'    => date('Y-m-d H:i:s')
         ];
 
         $this->pendaftaran_model->insert($data);
